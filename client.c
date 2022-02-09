@@ -6,17 +6,18 @@
 /*   By: ajana <ajana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:17:01 by ajana             #+#    #+#             */
-/*   Updated: 2022/02/06 21:40:56 by ajana            ###   ########.fr       */
+/*   Updated: 2022/02/09 18:22:57 by ajana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	s = 0;
-
 void	bin(unsigned int n, int ser_pid)
 {
-	while (s < 8)
+	int	i;
+
+	i = 0;
+	while (i < 8)
 	{
 		if (n % 2)
 			kill(ser_pid, SIGUSR2);
@@ -24,9 +25,9 @@ void	bin(unsigned int n, int ser_pid)
 			kill(ser_pid, SIGUSR1);
 		n = n / 2;
 		usleep(50);
-		s++;
+		i++;
 	}
-	s = 0;
+	i = 0;
 }
 
 int	main(int ac, char **av)
